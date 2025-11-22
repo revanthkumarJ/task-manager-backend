@@ -5,7 +5,8 @@ const Task = require("../data/tasks");
 
 router.delete("/:id", async (req, res) => {
     try {
-        const deletedTask = await Task.findOneAndDelete({ id: req.params.id });
+        console.log("Delete request for task ID:", req.params.id);
+        const deletedTask = await Task.findOneAndDelete({ _id: req.params.id });
 
         if (!deletedTask) {
             return res.status(404).json({ message: "Task not found" });
